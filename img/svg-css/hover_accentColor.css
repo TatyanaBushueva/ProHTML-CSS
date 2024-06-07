@@ -1,0 +1,7 @@
+svg {
+  fill: #636363;
+}
+svg:hover path {
+
+  fill: hsla(0, 100%, 71%, 1);
+}

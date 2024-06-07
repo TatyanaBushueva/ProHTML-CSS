@@ -1,0 +1,21 @@
+$accentColor: hsla(0, 100%, 71%, 1);
+$darkColor: hsla(240, 3%, 14%, 1);
+$secondaryTextColor: #6f6e6e;
+$lightBackground: hsl(0, 9%, 96%);
+$f_direction: row;
+$accentBackground: hsl(348, 26%, 96%);
+$lightTextColor: #636363;
+$lightLineColor: #EAEAEA;
+$burgerMenu: 230px;
+$siteWidth: 1140px;
+$arrowUp: polygon(50% 30%, 100% 55%, 100% 70%, 50% 45%, 0% 70%, 0% 55%);
+$arrowDown: polygon(0 40%, 0 55%, 50% 80%, 100% 55%, 100% 40%, 50% 65%);
+$transDuration: 0.4s;
+$cross: polygon(10% 0, 0 10%, 40% 50%, 0 90%, 10% 100%, 51% 60%, 90% 100%, 100% 90%, 60% 49%, 100% 10%, 90% 0, 50% 40%);
+
+$breakpoints: (
+  mb: 320px,
+  tb: 768px,
+  md: 1024px,
+  dt: 1440px
+);

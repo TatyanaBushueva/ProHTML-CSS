@@ -1,0 +1,29 @@
+@import "vars";
+
+@mixin flex_centered($f_direction) {
+  display: flex;
+  flex-direction: $f_direction;
+  align-items: center;
+  justify-content: center;
+}
+
+@mixin shadow {
+  -ms-box-shadow: 6px 4px 35px 1px rgba(0, 0, 0, 0.21);
+  -o-box-shadow: 6px 4px 35px 1px rgba(0, 0, 0, 0.21);
+  -webkit-box-shadow: 6px 4px 35px 1px rgba(0, 0, 0, 0.21);
+  -moz-box-shadow: 6px 4px 35px 1px rgba(0, 0, 0, 0.21);
+  box-shadow: 6px 4px 35px 1px rgba(0, 0, 0, 0.21);
+}
+
+
+@mixin arrow_up($color) {
+  content: " ";
+  display: block;
+  width: 12px;
+  height: 10px;
+  background-color: $color;
+  clip-path: $arrowDown;
+  transition-duration: $transDuration;
+  transition-property: background-color;
+}
+

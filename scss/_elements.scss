@@ -1,0 +1,1006 @@
+//В этом файле — кнопки и прочие повторяющиеся элементы
+
+@import "vars";
+@import "mixins";
+@import "normalize";
+@import "breakpoints";
+
+body {
+  font-family: 'Lato', sans-serif;
+}
+
+h1, h2, h3, h4, p {
+  margin: 0;
+}
+
+
+.center {
+  padding-left: calc(50% - $siteWidth / 2);
+  padding-right: calc(50% - $siteWidth / 2);
+
+}
+
+
+.no-spinners {
+  -moz-appearance: textfield;
+}
+
+.no-spinners::-webkit-outer-spin-button,
+.no-spinners::-webkit-inner-spin-button {
+  -webkit-appearance: none;
+  margin: 0;
+}
+
+.accent-color {
+  color: $accentColor;
+}
+
+//Стандартная кнопка в цвете сайта
+.button {
+  @include flex_centered(row);
+  padding: 0 12px;
+  gap: 12px;
+  font-size: 16px;
+  font-weight: 400;
+  line-height: 19px;
+  transition-duration: 0.4s;
+
+  &_basic-accent {
+    width: 212px;
+    height: 48px;
+    border: 1px solid $accentColor;
+    background: none;
+    color: $accentColor;
+
+    &:hover {
+      background-color: $accentColor;
+      color: white;
+    }
+  }
+
+  &_add-to-cart {
+    border: 1px solid white;
+    color: white;
+    width: 212px;
+    height: 48px;
+
+    svg {
+      path {
+        fill: white;
+      }
+    }
+
+    &:hover {
+      background-color: white;
+      color: $accentColor;
+
+      path {
+        fill: $accentColor;
+      }
+    }
+
+    &_filled {
+      width: 212px;
+      height: 48px;
+      border: 1px solid $accentColor;
+      background: none;
+      color: $accentColor;
+
+      &:hover {
+        background-color: $accentColor;
+        color: white;
+
+        svg {
+          path {
+            fill: white;
+          }
+        }
+      }
+    }
+  }
+
+  &_basic-gray {
+    color: $lightTextColor;
+    background: none;
+    border: 1px solid $lightTextColor;
+    width: 100px;
+    height: 48px;
+    font-weight: 300;
+    font-size: 11px;
+
+    &:hover {
+      border-color: $accentColor;
+      background-color: $accentColor;
+      color: white;
+    }
+  }
+}
+
+
+//Класс для создания ссылок поверх ДИВов*/
+.link {
+  position: absolute;
+  width: 100%;
+  height: 100%;
+  top: 0;
+  left: 0;
+  z-index: 1;
+}
+
+.nav-elements {
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  gap: 32px;
+  padding: 0 8px;
+}
+
+
+.nav-link {
+  color: white;
+  width: 32px;
+  height: 32px;
+
+  &:hover {
+    color: $accentColor;
+  }
+
+}
+
+.navbar {
+  display: flex;
+  height: 76px;
+  padding-top: 0;
+  padding-bottom: 0;
+  flex-direction: row;
+  align-items: center;
+  justify-content: space-between;
+  background-color: $darkColor;
+  position: relative;
+}
+
+.padding-top {
+  padding-top: 76px;
+}
+
+.fixed {
+  position: fixed;
+  width: 100%;
+  z-index: 9999;
+
+}
+
+
+#burger {
+  position: absolute;
+  left: -999999px;
+  visibility: hidden;
+
+  &:not(:checked) ~ .nav__box {
+    right: -$burgerMenu
+  }
+}
+
+.nav__box {
+  @include flex_centered(column);
+  @include shadow;
+  width: 232px;
+  background-color: $lightBackground;
+  position: absolute;
+  right: 0;
+  top: 76px;
+  align-items: flex-start;
+  padding: 16px 32px;
+  gap: 10px;
+  box-sizing: border-box;
+  transition: right .3s ease-in;
+  z-index: 100;
+
+  p {
+    font-size: 14px;
+    font-weight: bold;
+    text-align: left;
+    color: #000000;
+  }
+
+
+  &__main_sections {
+    width: 100%;
+    font-style: normal;
+    font-weight: 400;
+    font-size: 14px;
+    line-height: 17px;
+    color: $accentColor;
+    margin-top: 10px;
+  }
+
+  &__item {
+    font-size: 14px;
+    text-align: left;
+    color: $lightTextColor;
+    padding: 5px 20px;
+
+    &:hover {
+      color: $accentColor;
+    }
+  }
+
+  & > ul > li {
+    margin-top: 10px;
+  }
+
+}
+
+label.close {
+  justify-content: flex-end;
+}
+
+
+//Стиль дивов для иконок в меню
+.menu__icon {
+  position: relative;
+  height: 76px;
+  width: 32px;
+  background-position: center;
+  background-repeat: no-repeat;
+  display: flex;
+  align-items: center;
+
+  &__shopping-cart {
+    background-image: url("../img/Shopping-cart_icon.svg");
+    display: block;
+    position: relative;
+  }
+
+  &__person {
+    background-image: url("../img/person_icon.svg");
+  }
+
+  &__search {
+    background-image: url("../img/Search_icon.svg");
+  }
+}
+
+
+.hamburger-menu {
+  display: block;
+  background-image: url("../img/Hamburger_icon.svg");
+  height: 32px;
+  width: 32px;
+  background-repeat: no-repeat;
+  background-position: center;
+}
+
+//------------<
+
+h4 {
+  font-style: normal;
+  font-weight: 700;
+  font-size: 14px;
+  line-height: 17px;
+  color: $darkColor;
+}
+
+
+.badge {
+  position: absolute;
+  left: 16px;
+  top: 15px;
+  height: 19px;
+  width: 19px;
+  background-color: $accentColor;
+  border-radius: 20px;
+  @include flex_centered(row);
+
+  &__number {
+    color: white;
+    text-align: center;
+    font-size: 12px;
+    font-style: normal;
+    font-weight: 400;
+    line-height: normal;
+    margin-top: -2px;
+  }
+}
+
+//Полоса сверху с крошками. Розовая
+.header {
+  background-color: $accentBackground;
+  position: sticky;
+  top: -50px;
+  z-index: 200;
+
+  &__nav {
+    @include flex_centered(row);
+    margin-top: 60px;
+    padding-bottom: 10px;
+    justify-content: space-between;
+    flex-wrap: wrap;
+  }
+
+  &__heading {
+    font-style: normal;
+    font-weight: 400;
+    font-size: 24px;
+    line-height: 29px;
+    color: $accentColor;
+  }
+
+  &__breadcrumbs {
+    a {
+      font-style: normal;
+      font-weight: 300;
+      font-size: 14px;
+      line-height: 17px;
+      color: $lightTextColor;
+      text-align: right;
+
+      &:not(:last-child):after {
+        content: "/";
+        margin: 0 8px;
+      }
+
+      &:last-child {
+        font-style: normal;
+        font-weight: 700;
+        font-size: 14px;
+        line-height: 17px;
+        color: $accentColor;
+      }
+    }
+  }
+}
+
+//Нижняя добавка к хедеру, чтобы красиво срабатывал стики
+.fiftypx {
+  display: block;
+  width: 100%;
+  height: 50px;
+  background-color: $accentBackground;
+}
+
+
+//Чекбокс в выпадающем меню
+input[type="checkbox"] {
+  appearance: none;
+  -webkit-appearance: none;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  border: 1px solid $lightLineColor;
+  border-radius: 2px;
+  box-sizing: border-box;
+  overflow: hidden;
+  min-width: 24px;
+  height: 24px;
+  transition: 0.4s;
+
+  &:hover {
+    border: 1px solid $accentColor;
+  }
+
+  &::before {
+    width: 100%;
+    padding: 2px 0 0 1px;
+    content: url("../img/galka.svg");
+    opacity: 0;
+    background-color: $accentColor;
+    transition: 0.3s;
+
+  }
+
+  &:checked::before {
+    opacity: 100;
+  }
+}
+
+label {
+  display: flex;
+  padding: 4px 4px 4px 0;
+  width: 100%;
+}
+
+//Стилизация details
+.details_floating[open] {
+  display: flex;
+  flex-direction: row;
+  text-align: left;
+  position: relative;
+
+  ul {
+    display: flex;
+    flex-direction: column;
+    padding: 16px;
+    gap: 10px;
+    min-width: fit-content;
+    position: absolute;
+    right: 0;
+    @include shadow;
+    background-color: white;
+    z-index: 110;
+  }
+}
+
+.full-width {
+  width: 100%;
+  box-sizing: border-box;
+}
+
+.divider_light {
+  width: 100%;
+  border: 1px solid $lightLineColor;
+  margin: 65px 0;
+}
+
+.v-gap_65 {
+  margin-top: 65px;
+  margin-bottom: 65px;
+}
+
+.v-gap_20 {
+  margin-top: 20px;
+  margin-bottom: 20px;
+}
+
+//Бокс для фильтров каталоге
+.filter__box {
+  display: grid;
+  grid-template-columns: minmax(200px, 300px) 1fr minmax(200px, 300px);
+  margin-bottom: 40px;
+  z-index: 100;
+  position: relative;
+  padding-top: 64px;
+}
+
+//Стандартные формы
+.basic-form {
+  display: flex;
+  flex-direction: column;
+  gap: 20px;
+  width: 100%;
+
+  &__heading {
+    font-weight: 300;
+    font-size: 16px;
+    color: $lightTextColor;
+  }
+
+  &__field {
+    width: 100%;
+    box-sizing: border-box;
+    border: 1px solid $lightTextColor;
+    height: 45px;
+    font-weight: 400;
+    font-size: 13px;
+    color: $lightTextColor;
+    padding: 0 16px;
+  }
+}
+
+//Поле для окон регистрации и корзины
+.main-area {
+  padding-top: 112px;
+  display: grid;
+  grid-template-columns: repeat(12, 1fr);
+  column-gap: 30px;
+  height: fit-content;
+}
+
+//Базовое дропдаун меню
+.dropdown {
+  position: relative;
+  width: fit-content;
+
+  &-menu {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    width: fit-content;
+
+    &__list {
+      display: none;
+      position: absolute;
+      left: -8px;
+      top: -16px;
+      height: 0;
+      width: 100%;
+    }
+
+    &__item {
+      display: flex;
+      flex-direction: row;
+      gap: 10px;
+
+      &:hover {
+        color: $accentColor;
+      }
+    }
+
+    &:hover + &__list, &__list:hover {
+      display: flex;
+      flex-direction: column;
+      gap: 20px;
+      z-index: -1;
+      height: fit-content;
+      padding: 56px 8px 16px 8px;
+      background-color: white;
+      border-radius: 8px;
+      @include shadow;
+      min-width: max-content;
+    }
+  }
+}
+
+
+.filter-heading_arrow {
+  display: flex;
+  flex-direction: row;
+  gap: 8px;
+  font-weight: 400;
+  font-size: 14px;
+  color: $secondaryTextColor;
+
+  &:after {
+    content: "";
+    display: block;
+    width: 12px;
+    height: 14px;
+    clip-path: $arrowDown;
+    background-color: $secondaryTextColor;
+  }
+}
+
+.dropdown-menu__item label {
+  font-weight: 400;
+  font-size: 14px;
+  color: $secondaryTextColor;
+}
+
+fieldset {
+  border: none;
+}
+
+.fieldset__item {
+  display: flex;
+  flex-direction: row;
+  gap: 8px;
+}
+
+.centered-filters {
+  grid-column: 2 / 3;
+  display: flex;
+  flex-direction: row;
+  justify-content: center;
+  gap: 32px;
+}
+
+//Галерея товаров
+.goods {
+  display: grid;
+  grid-template-columns: repeat(3, minmax(300px, 360px));
+  column-gap: 30px;
+  row-gap: 30px;
+  padding-bottom: 0;
+
+  &__image {
+    @include flex_centered(column);
+    position: relative;
+
+    img {
+      width: 100%;
+    }
+
+    &_hoverbox {
+      position: absolute;
+      left: 0;
+      top: 0;
+      width: 100%;
+      height: 100%;
+      @include flex_centered(row);
+      background-color: rgba(58, 56, 56, 0.86);
+      opacity: 0;
+      transition-property: opacity;
+      transition-duration: .4s;
+      transition-timing-function: ease-in;
+
+      &:hover {
+        opacity: 1;
+      }
+    }
+  }
+
+  &__item {
+    display: flex;
+    flex-direction: column;
+    background-color: $lightBackground;
+    /* Заголовок раздела с каталогом товаров*/
+    &:first-child {
+      grid-column: 1 / -1;
+      align-items: center;
+      background-color: white;
+
+    }
+
+    &__heading {
+      font-size: 30px;
+      font-weight: 400;
+      line-height: 36px;
+      text-align: center;
+    }
+
+    &__text {
+      font-size: 14px;
+      font-weight: 400;
+      line-height: 17px;
+      text-align: center;
+      padding: 6px 0 18px;
+    }
+
+    &:last-child {
+      grid-column: 1 / -1;
+      align-items: center;
+      padding-top: 16px;
+      padding-bottom: 95px;
+      background-color: white;
+    }
+  }
+
+  &__credits {
+    display: flex;
+    flex-direction: column;
+    padding: 24px 16px 20px;
+
+    &-link {
+      font-size: 13px;
+      font-weight: 400;
+      line-height: 16px;
+      text-align: left;
+      color: $darkColor;
+      transition-duration: $transDuration;
+      transition-property: color;
+
+      &:hover {
+        color: $accentColor;
+      }
+    }
+
+    &-text {
+      font-size: 14px;
+      font-weight: 400;
+      line-height: 17px;
+      text-align: left;
+      padding: 12px 0 16px;
+    }
+
+    &-price {
+      color: $accentColor;
+      font-size: 16px;
+      font-weight: 400;
+      line-height: 19px;
+      text-align: left;
+    }
+  }
+}
+
+
+//Секция подписки
+.subscribe {
+  @include flex_centered(row);
+  justify-content: space-around;
+  height: 448px;
+  background-image: url("../img/photo_subscribe.jpg");
+  background-position: center;
+  background-repeat: no-repeat;
+  background-size: cover;
+}
+
+.comment {
+  @include flex_centered(column);
+  width: 360px;
+  gap: 30px;
+
+  &_photo {
+    border-radius: 50%;
+    width: 96px;
+    height: 96px;
+    background-color: $accentColor;
+    background-image: url("../img/comment_portrait.jpg");
+    background-position: top -20px right 50%;
+    background-repeat: no-repeat;
+    background-size: 144px 150px;
+  }
+
+  &_text {
+    font-style: normal;
+    font-weight: 400;
+    font-size: 20px;
+    line-height: 24px;
+    text-align: center;
+    color: $darkColor;
+  }
+}
+
+.subscribe-form {
+  @include flex_centered(column);
+
+  &__label {
+    font-style: normal;
+    font-weight: 400;
+    font-size: 18px;
+    line-height: 167.2%;
+    /* or 30px */
+    text-align: center;
+    color: $darkColor;
+    display: flex;
+    padding: 4px 4px 4px 0;
+    width: 100%;
+    flex-direction: column;
+    flex-wrap: wrap;
+  }
+
+  &__header {
+    font-style: normal;
+    font-weight: 700;
+    font-size: 24px;
+    line-height: 1.4em;
+    text-align: center;
+    color: $darkColor;
+  }
+
+  &__line {
+    margin-top: 32px;
+    display: flex;
+    flex-direction: row;
+    width: 356px;
+    height: 49px;
+    border-radius: 25px;
+    overflow: hidden;
+
+    input:first-child {
+      padding-left: 22px;
+      background-color: #E1E1E1;
+      border: none;
+      width: 100%;
+      font-style: normal;
+      font-weight: 400;
+      font-size: 14px;
+      line-height: 17px;
+      display: flex;
+      align-items: center;
+      color: $darkColor;
+      opacity: 0.67;
+
+      &:focus {
+        border: none;
+        background-color: white;
+        outline: none;
+        box-shadow: none;
+      }
+    }
+
+    input:last-child {
+      min-width: 100px;
+      background-color: $accentColor;
+      border: none;
+      font-style: normal;
+      font-weight: 400;
+      font-size: 14px;
+      line-height: 17px;
+      display: flex;
+      align-items: center;
+      text-align: center;
+      color: white;
+      justify-content: center;
+    }
+  }
+}
+
+//----Конец подписки-----
+
+.footer {
+  @include flex_centered(row);
+  padding-top: 24px;
+  padding-bottom: 24px;
+  background-color: $darkColor;
+  justify-content: space-between;
+}
+
+.copyright {
+  @include flex_centered(row);
+
+  p {
+    font-style: normal;
+    font-weight: 400;
+    font-size: 16px;
+    line-height: 19px;
+    color: #FBFBFB;
+    margin: 0;
+  }
+
+}
+
+.social_links {
+  display: flex;
+  flex-direction: row;
+  gap: 8px;
+}
+
+.social_icon {
+  @include flex_centered(row);
+  width: 32px;
+  height: 32px;
+  background-color: white;
+  transition-property: background-color;
+  transition-duration: .4s;
+  transition-timing-function: ease-in;
+
+  &:hover {
+    background-color: $accentColor;
+
+    & path {
+      transition-property: fill;
+      transition-duration: .4s;
+      transition-timing-function: ease-in;
+      fill: white;
+    }
+  }
+}
+
+@include tb {
+
+  $siteWidth: calc(map-get($breakpoints, tb) - 16px);
+  .center {
+    padding-left: calc(50% - $siteWidth / 2);
+    padding-right: calc(50% - $siteWidth / 2);
+  }
+
+  .main-area {
+    padding-top: 60px;
+  }
+
+  //Главная страница и общие шапки подвалы
+  .nav-elements {
+    padding: 0;
+  }
+
+  .swiper {
+    height: 624px;
+
+    &__slide {
+      overflow: hidden;
+    }
+
+    &-slide-active {
+      z-index: 999;
+    }
+
+    &-slide img {
+      width: auto !important;
+    }
+  }
+
+  .goods {
+    grid-template-columns: repeat(2, minmax(300px, 2fr));
+    column-gap: 16px;
+    row-gap: 16px;
+    padding-bottom: 32px;
+
+    &__item:last-child {
+      padding-top: 20px;
+      padding-bottom: 64px;
+    }
+  }
+
+  .feature {
+    flex-direction: column;
+    height: fit-content;
+    padding-top: 48px;
+    padding-bottom: 64px;
+    gap: 48px;
+
+    &__topic {
+      height: fit-content;
+
+      &__image {
+        margin-bottom: 10px;
+      }
+    }
+  }
+
+  .subscribe {
+    flex-direction: column;
+    align-items: center;
+    padding: 64px 0 140px;
+    gap: 48px;
+    height: fit-content;
+  }
+
+  .footer {
+    padding-left: 32px;
+    padding-right: 32px;
+  }
+
+  .centered-filters {
+    grid-column: 2 / -1;
+    justify-content: flex-end;
+  }
+}
+
+@include mb {
+  .center {
+    padding-left: 16px;
+    padding-right: 16px;
+  }
+  .main-area {
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    padding-top: 40px;
+  }
+  .menu__icon__shopping-cart {
+    display: none;
+  }
+  .menu__icon__person {
+    display: none;
+  }
+
+  .header__nav {
+    flex-direction: column;
+    align-items: center;
+    gap: 32px;
+    margin-top: 60px;
+  }
+  .swiper {
+    height: 624px;
+
+    &__slide {
+      overflow: hidden;
+    }
+
+    &-slide-active {
+      z-index: 999;
+    }
+
+    &-slide img {
+      width: auto !important;
+    }
+  }
+  .goods {
+    grid-template-columns: 1fr;
+    row-gap: 16px;
+
+    &__item:last-child {
+      padding-top: 20px;
+      padding-bottom: 64px;
+    }
+  }
+
+  .subscribe {
+    flex-direction: column;
+    align-items: center;
+    padding: 64px 0 140px;
+    gap: 48px;
+    height: fit-content;
+  }
+  .comment_text {
+    font-size: 18px;
+  }
+
+  .footer {
+    padding-top: 43px;
+    flex-direction: column-reverse;
+    gap: 40px;
+  }
+  .navbar-nav .dropdown-menu {
+    position: absolute;
+    left: -250px;
+  }
+
+  .filter-heading_arrow {
+    font-size: 10px;
+
+    &:after {
+      width: 8px;
+      height: 8px;
+    }
+  }
+}

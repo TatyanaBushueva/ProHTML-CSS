@@ -1,0 +1,265 @@
+@import "mixins";
+@import "elements";
+
+
+//Баннер верхний
+.banner {
+  display: grid;
+  grid-template-columns: 634px 1fr;
+  background-color: #F1E4E6;
+  align-content: center;
+
+  &__img {
+    display: flex;
+    height: inherit;
+
+    img {
+      height: 100%;
+      width: auto;
+    }
+  }
+
+  &__site-name {
+    display: flex;
+    flex-direction: column;
+    border-left: 12px solid #F16D7F;
+    padding-left: 27px;
+    margin-top: 290px;
+    height: min-content;
+
+    h1 {
+      color: #222;
+      font-size: 48px;
+      font-style: normal;
+      font-weight: 900;
+      line-height: 100%;
+    }
+
+    p {
+      color: #222;
+      font-size: 32px;
+      font-style: normal;
+      font-weight: 700;
+      line-height: normal;
+      margin-bottom: 0;
+
+      span {
+        color: #F16D7F;
+      }
+    }
+  }
+}
+
+
+//Картинки предложений
+.offer {
+  display: grid;
+  grid-template-columns: repeat(3, minmax(300px, 360px));
+  column-gap: 30px;
+  row-gap: 30px;
+  padding-top: 65px;
+  padding-bottom: 110px;
+
+  &__item {
+    display: flex;
+    height: 245px;
+    background-repeat: no-repeat;
+    background-size: cover;
+    position: relative;
+    overflow: hidden;
+    padding: 0;
+
+    &:nth-child(1) {
+      background-image: url("../img/1-for women.png");
+    }
+
+    &:nth-child(2) {
+      background-image: url("../img/2-for men.png");
+    }
+
+    &:nth-child(3) {
+      background-image: url("../img/3-for kids.png");
+    }
+
+    &:nth-child(4) {
+      height: 180px;
+      background-image: url("../img/4-ACCESORIES.png");
+      grid-column: 1 / -1;
+    }
+  }
+
+  &__caption {
+    position: absolute;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    gap: 0.4em;
+    text-align: center;
+    height: 100%;
+    width: 100%;
+    background: rgba(33, 22, 22, 0.7);
+    z-index: 1;
+    margin: 0;
+
+    h2 {
+      color: white;
+      font-size: 16px;
+      font-style: normal;
+      font-weight: 400;
+      line-height: normal;
+      padding: 0;
+
+      span {
+        color: $accentColor;
+        font-size: 24px;
+        font-style: normal;
+        font-weight: 700;
+        line-height: normal;
+        padding: 0;
+      }
+    }
+  }
+}
+
+
+.feature {
+  padding: 104px 40px;
+  background-color: $darkColor;
+  @include flex_centered(row);
+  gap: 30px;
+  flex-wrap: nowrap;
+
+  &__topic {
+    @include flex_centered(column);
+    flex-wrap: nowrap;
+    max-width: 360px;
+    height: 134px;
+    justify-content: flex-start;
+
+    &__image {
+      @include flex_centered(column);
+      justify-content: flex-start;
+      min-height: 60px;
+      margin-bottom: 0;
+    }
+
+    &__header {
+      font-style: normal;
+      font-weight: 400;
+      font-size: 19.96px;
+      line-height: 24px;
+      color: #FBFBFB;
+      margin-bottom: 0;
+    }
+
+    &__txt {
+      font-style: normal;
+      font-weight: 300;
+      font-size: 13.972px;
+      line-height: 17px;
+      text-align: center;
+      color: #FBFBFB;
+      margin-top: 16px;
+      padding: 0;
+    }
+  }
+}
+
+
+@include tb {
+  .banner {
+    grid-template-columns: 408px 1fr;
+    height: 367px;
+
+    &__img {
+      justify-content: center;
+    }
+
+    &__site-name {
+      margin-top: 138px;
+
+      h1 {
+        font-size: 44px;
+      }
+
+      p {
+        font-size: 24px;
+      }
+    }
+  }
+
+  .offer {
+    grid-template-columns: repeat(3, minmax(200px, 3fr));
+    column-gap: 20px;
+    row-gap: 20px;
+    padding-bottom: 96px;
+
+    &__item {
+      height: 167px;
+
+      &:nth-child(4) {
+        height: 116px;
+      }
+    }
+  }
+
+
+}
+
+@include mb {
+  .banner {
+    grid-template-columns: 1fr;
+    height: 367px;
+
+    &__img {
+      display: none;
+    }
+
+    &__site-name {
+      margin-top: auto;
+
+      h1 {
+        font-size: 38px;
+      }
+
+      p {
+        font-size: 20px;
+      }
+    }
+  }
+
+  .offer {
+    grid-template-columns: 1fr;
+    row-gap: 32px;
+    padding-top: 64px;
+    padding-bottom: 64px;
+  }
+
+  $o-i_height: 250px;
+
+  .offer__item {
+    height: $o-i_height;
+
+    &:nth-child(4) {
+      height: 111px;
+    }
+  }
+
+  .feature {
+    flex-direction: column;
+    height: fit-content;
+    padding-top: 48px;
+    padding-bottom: 81px;
+    gap: 48px;
+
+    &__topic {
+      height: fit-content;
+
+      &__image {
+        margin-bottom: 10px;
+      }
+    }
+
+  }
+}

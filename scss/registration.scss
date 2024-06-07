@@ -1,0 +1,166 @@
+@import "mixins";
+@import "elements";
+
+.main-area_padding {
+  padding-top: 64px;
+  padding-bottom: 96px;
+}
+
+.form__box {
+  display: flex;
+  grid-column: 1 / 5;
+
+  label {
+    font-weight: 300;
+    font-size: 16px;
+    color: #222;
+  }
+
+  p {
+    font-weight: 300;
+    font-size: 13px;
+    color: #b1b1b1;
+    margin-top: -5px;
+    margin-bottom: 20px;
+  }
+}
+
+.form__radio {
+  display: flex;
+  flex-direction: row;
+  gap: 10px;
+  padding: 10px 0;
+  border: none;
+
+  label {
+    width: fit-content;
+    margin-right: 10px;
+  }
+
+  input {
+    /* The native appearance is hidden */
+    appearance: none;
+    -webkit-appearance: none;
+
+    /* For a circular appearance we need a border-radius. */
+    border-radius: 50%;
+
+    margin-top: 6px;
+    width: 14px;
+    height: 14px;
+
+    /* The background will be the radio dot's color. */
+    background: $lightLineColor;
+
+    /* The border will be the spacing between the dot and the outer circle */
+    border: 3px solid #FFF;
+
+    /* And by creating a box-shadow with no offset and no blur, we have an outer circle */
+    box-shadow: 0 0 0 1px $secondaryTextColor;
+
+    &:checked {
+
+      /* The background will be the radio dot's color. */
+      background: $accentColor;
+
+      /* The border will be the spacing between the dot and the outer circle */
+      border: 3px solid #FFF;
+
+      /* And by creating a box-shadow with no offset and no blur, we have an outer circle */
+      box-shadow: 0 0 0 1px $accentColor;
+    }
+  }
+}
+
+.registration_btn {
+  width: 170px;
+  background-image: url(../img/join-now_arrow.svg);
+  background-repeat: no-repeat;
+  background-position: right 25px top 50%;
+  text-align: left;
+  padding-right: 39px;
+  font-weight: 400;
+  font-size: 14px;
+
+  &:hover {
+    background-image: url(../img/join-now_arrow_white.svg);
+  }
+}
+
+.text-box {
+  grid-column: 6 / -1;
+}
+
+.registration {
+  &__heading {
+    font-weight: 300;
+    font-size: 24px;
+    color: #000;
+    margin-bottom: 24px;
+  }
+
+  &__text {
+    font-weight: 300;
+    font-size: 24px;
+    color: #000;
+    margin-bottom: 24px;
+  }
+
+  &__list {
+    font-weight: 300;
+    font-size: 24px;
+    color: #000;
+    margin-bottom: 16px;
+    list-style-image: url(../img/galka_list.svg);
+    margin-left: 28px;
+    padding-left: 10px;
+  }
+}
+
+@include tb {
+  .form__box {
+    grid-column: 1 / 7;
+  }
+  .main-area_padding {
+    padding-top: 40px;
+  }
+  .text-box {
+    grid-column: 7 / -1;
+  }
+  .registration {
+    &__heading {
+      font-size: 16px;
+    }
+
+    &__text {
+      font-size: 16px;
+    }
+
+    &__list {
+      font-size: 16px;
+    }
+  }
+}
+
+@include mb {
+  .form__box {
+    grid-column: 1 / -1;
+  }
+  .text-box {
+    padding-top: 60px;
+    grid-column: 1 / -1;
+  }
+  .registration {
+    &__heading {
+      font-size: 16px;
+    }
+
+    &__text {
+      font-size: 16px;
+    }
+
+    &__list {
+      font-size: 16px;
+    }
+  }
+}

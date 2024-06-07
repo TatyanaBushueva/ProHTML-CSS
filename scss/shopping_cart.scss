@@ -1,0 +1,254 @@
+@import "mixins";
+@import "elements";
+
+.cart {
+  @include flex_centered(column);
+  grid-column: 1 / 8;
+}
+
+.check {
+  @include flex_centered(column);
+  justify-content: flex-start;
+  grid-column: 9 / -1;
+  position: relative;
+}
+
+.final-sum {
+  background-color: $lightBackground;
+  width: 100%;
+  display: flex;
+  flex-direction: column;
+  align-items: flex-end;
+  padding: 40px;
+  margin-top: 64px;
+  box-sizing: border-box;
+  margin-bottom: 112px;
+  position: sticky;
+  top: 150px;
+
+  &__subtotal {
+    display: flex;
+    flex-direction: row;
+    gap: 25px;
+    font-weight: 400;
+    font-size: 11px;
+    color: #4a4a4a;
+  }
+
+  &__total {
+    margin-top: 12px;
+    display: flex;
+    flex-direction: row;
+    gap: 25px;
+    font-weight: 300;
+    font-size: 16px;
+    color: #222;
+
+    span:last-child {
+      font-weight: 700;
+      color: #f16d7f;
+    }
+  }
+}
+
+.purchase {
+  display: flex;
+  flex-direction: column;
+  grid-column: 1 / 8;
+  gap: 40px;
+
+  &__box {
+    position: relative;
+    display: flex;
+    flex-direction: row;
+    width: 100%;
+    height: 300px;
+    @include shadow;
+  }
+
+  &__description {
+    display: flex;
+    flex-direction: column;
+    gap: 6px;
+  }
+
+  &__img {
+    width: 262px;
+    height: 100%;
+    object-fit: contain;
+    margin-right: 30px;
+    overflow: hidden;
+  }
+
+  &__buttons-box {
+    display: flex;
+    justify-content: space-between;
+  }
+}
+.width_235-and-margins {
+  width: 235px;
+  margin-top: 32px;
+  margin-bottom: 128px;
+}
+
+.description {
+  &__heading {
+    font-weight: 400;
+    font-size: 24px;
+    color: #222;
+    margin: 22px 97px 36px 0;
+  }
+
+  &__text {
+    font-weight: 400;
+    font-size: 22px;
+    color: #575757;
+    margin: 0;
+  }
+
+  &__quantity {
+    padding: 0;
+    display: flex;
+    flex-direction: row;
+    gap: 1em;
+    align-items: flex-end;
+
+    label {
+      padding: 0;
+      width: fit-content;
+    }
+
+    input {
+      height: 22px;
+      width: 48px;
+      box-sizing: border-box;
+      border: 1px solid #a4a4a4;
+      padding-left: 8px;
+    }
+  }
+}
+
+.close {
+  &-box {
+    position: absolute;
+    padding: 0;
+    right: 20px;
+    top: 20px;
+    display: block;
+    width: 18px;
+    height: 18px;
+
+    &:hover .close-cross {
+      background-color: $accentColor;
+    }
+  }
+
+  &-cross {
+    width: 100%;
+    height: 100%;
+    transition-duration: $transDuration;
+    transition-property: background-color;
+    background-color: $lightTextColor;
+    clip-path: $cross;
+  }
+}
+
+
+@include tb {
+  .purchase {
+    grid-column: 1 / -1;
+  }
+
+  .purchase__buttons-box {
+    justify-content: center;
+    gap: 50px;
+  }
+
+  .width_235-and-margins {
+    margin-top: 20px;
+    margin-bottom: 64px;
+  }
+
+  .check {
+    grid-column: 1 / -1;
+    flex-direction: row;
+    flex-wrap: wrap;
+    justify-content: space-between;
+    align-items: flex-start;
+    gap: 16px;
+  }
+
+  .final-sum {
+    margin-top: 36px  ;
+  }
+}
+
+@include mb {
+
+  .purchase {
+    grid-column: 1 / -1;
+
+    &__img {
+      display: flex;
+      justify-content: center;
+    }
+
+    &__buttons-box {
+      justify-content: center;
+      gap: 50px;
+    }
+  }
+
+  .width_235-and-margins {
+    margin-top: 20px;
+    margin-bottom: 64px;
+  }
+
+  .check {
+    grid-column: 1 / -1;
+    flex-direction: row;
+    flex-wrap: wrap;
+    justify-content: space-between;
+    align-items: flex-start;
+    gap: 16px;
+  }
+
+  .final-sum {
+    margin-top: 36px;
+    margin-bottom: 96px;
+  }
+
+  .purchase__box {
+    height: 200px;
+  }
+
+  .purchase__img {
+    width: 143px;
+    img {
+      min-width: 100%;
+      object-fit: cover;
+    }
+  }
+
+  .description__heading {
+    font-size: 16px;
+    margin-right: 40px;
+    margin-bottom: 24px;
+  }
+
+  .description__text {
+    font-size: 14px;
+  }
+
+  .description__quantity input {
+    height: 16px;
+    width: 30px;
+    font-size: 10px;
+  }
+
+  .close-box {
+    margin-top: 4px;
+    width: 12px;
+    height: 12px;
+  }
+}
